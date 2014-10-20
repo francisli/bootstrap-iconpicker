@@ -9,11 +9,7 @@
  */
 
 .iconpicker .caret {
-    margin-left: 10px !important;
-}
-
-.iconpicker {
-    min-width: 60px;
+    margin-left: 0 !important;
 }
 
 .table-icons .btn{

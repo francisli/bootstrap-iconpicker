@@ -252,12 +252,12 @@
         var op = this.options;
         var tr = $('<tr></tr>');
         for(var i = 0; i < op.cols; i++){
-            var btn = $('<button class="btn ' + op.arrowClass + '"><span class="glyphicon"></span></button>');
+            var btn = $('<button class="btn ' + op.arrowClass + '"><span class="fa"></span></button>');
             var td = $('<td class="text-center"></td>');
             if(i == 0 || i == op.cols - 1){
                 btn.val((i==0) ? -1: 1);
                 btn.addClass((i==0) ? 'btn-previous': 'btn-next');
-                btn.find('span').addClass( (i == 0) ? 'glyphicon-arrow-left': 'glyphicon-arrow-right');
+                btn.find('span').addClass( (i == 0) ? 'fa-arrow-left': 'fa-arrow-right');
                 td.append(btn);
                 tr.append(td);
             }
@@ -271,7 +271,7 @@
             var search = [
                 '<tr>',
                 '   <td colspan="' + op.cols + '">',
-                '       <input type="text" class="form-control search-control" style="width: ' + op.cols * 39 + 'px;" placeholder="' + op.searchText + '">',
+                '       <input type="text" class="form-control search-control" placeholder="' + op.searchText + '">',
                 '   </td>',
                 '</tr>'
             ];            
@@ -318,7 +318,7 @@
             el.find('input').val(icon);
             el.find('i').attr('class', '').addClass(op.iconClass).addClass(icon);
             el.trigger({ type: "change", icon: icon });
-            op.table.find('button.' + op.selectedClass).removeClass(op.selectedClass);
+            // op.table.find('button.' + op.selectedClass).removeClass(op.selectedClass);
         }
     };
 
@@ -329,7 +329,7 @@
             var page = Math.ceil( (op.selected + 1) / (op.cols * op.rows) );
             this.changeList(page);
         }        
-        op.table.find('i.'+icon).parent().addClass(op.selectedClass);
+        // op.table.find('i.'+icon).parent().addClass(op.selectedClass);
     };
 
     Iconpicker.prototype.changeList = function(page){
@@ -398,10 +398,7 @@
                     table: $('<table class="table-icons"><thead></thead><tbody></tbody></table>')
                 });
                 var name = ( typeof $this.attr('name') != 'undefined' ) ? 'name="' + $this.attr('name') + '"' : '';
-                $this.empty()
-                    .append('<i></i>')
-                    .append('<input type="hidden" ' + name + '></input>')
-                    .append('<span class="caret"></span>');
+                $this.append('<input type="hidden" ' + name + '></input>')
                 $this.addClass('iconpicker');
                 data.createButtonBar();                
                 data.changeList(1);
